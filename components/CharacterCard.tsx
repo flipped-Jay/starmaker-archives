@@ -25,7 +25,7 @@ const CharacterCard: React.FC<CharacterCardProps> = ({ character, onClick }) => 
       {/* Image Container */}
       <div className="h-52 overflow-hidden relative bg-slate-100">
         <img 
-          src={character.avatarUrl} 
+          src={`${import.meta.env.BASE_URL}${character.avatarUrl.replace(/^\//, '')}`} 
           alt={character.name} 
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />

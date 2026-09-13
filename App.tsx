@@ -20,23 +20,25 @@ export default function App() {
   const [characters, setCharacters] = useState<Character[]>([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  useEffect(() => {
-    const fetchCharacters = async () => {
-      const response = await fetch('/data/characters.json');
-      const data = await response.json();
-      setCharacters(data);
-    };
-    fetchCharacters();
-  }, []);
+// 1. 修改 fetch 请求
+useEffect(() => {
+  const fetchCharacters = async () => {
+    // 👇 注意这里换成了反引号 `
+    const response = await fetch(`${import.meta.env.BASE_URL}data/characters.json`);
+    const data = await response.json();
+    setCharacters(data);
+  };
+  fetchCharacters();
+}, []);
 
-  // Custom hero images for the carousel
-  const heroCharacters = [
-    { id: 'hero-1', avatarUrl: '/images/1.png' },
-    { id: 'hero-2', avatarUrl: '/images/2.png' },
-    { id: 'hero-3', avatarUrl: '/images/3.png' },
-    { id: 'hero-4', avatarUrl: '/images/4.png' }
-  ];
-
+// 2. 修改 heroImages 数组
+const heroCharacters = [
+  // 👇 全部换成反引号 `
+  { id: 'hero-1', avatarUrl: `${import.meta.env.BASE_URL}images/1.png` },
+  { id: 'hero-2', avatarUrl: `${import.meta.env.BASE_URL}images/2.png` },
+  { id: 'hero-3', avatarUrl: `${import.meta.env.BASE_URL}images/3.png` },
+  { id: 'hero-4', avatarUrl: `${import.meta.env.BASE_URL}images/4.png` }
+];
   useEffect(() => {
     const timer = setInterval(() => {
       setHeroImageIndex((prev) => (prev + 1) % heroCharacters.length);
