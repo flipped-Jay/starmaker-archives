@@ -1,4 +1,4 @@
-# Starmaker Archives - 造星物语详细攻略档案
+# Starmaker Archives - 造星物语详细攻略档案 
 
 这是一个React + TypeScript + Vite构建的静态网站，提供《造星物语》游戏的详细攻略档案。
 
